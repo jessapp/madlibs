@@ -2,9 +2,18 @@
 {% extends 'base.html' %}
 
 <html>
-  {% block title %}A Compliment{% endblock %}
+  {% block title %}{% endblock %}
 {% block content %}
-    Hi {{ name }}! I think you're {{ compliment }}!
+    Hi {{ name }}! 
+
+    {% if compliments %}
+        I think you're:
+        <ul>
+            {% for compliment in compliments %}
+                <li>{{ compliment }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 
     <form action="/game">
@@ -15,3 +24,4 @@
     </form>
 {% endblock %}
 </html>
+

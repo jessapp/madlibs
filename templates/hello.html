@@ -1,9 +1,11 @@
 <!doctype html>
+{% extends 'base.html' %}
+
 <html>
 <head>
-  <title>Hi There!</title>
+  {% block title %}{% endblock %}
 </head>
-<body>
+{% block content %}
 
 <h1>Hi There!</h1>
 
@@ -12,5 +14,5 @@
   <input type="submit">
 </form>
 
-</body>
+{% endblock %}
 </html>

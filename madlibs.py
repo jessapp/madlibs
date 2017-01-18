@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -33,11 +33,11 @@ def greet_person():
 
     name = request.args.get("name")
 
-    compliment = choice(AWESOMENESS)
+    compliments = sample(AWESOMENESS, 3)
 
     return render_template("compliment.html",
                            name=name,
-                           compliment=compliment)
+                           compliments=compliments)
 
 
 @app.route('/game')
@@ -53,19 +53,26 @@ def show_madlib_form():
         return render_template("goodbye.html")
 
 
-@app.route('/madlibs')
+@app.route('/madlibs', methods=["POST"])
 def play_madlibs():
     """Play game."""
 
     color = []
 
-    color = request.args.getlist("color")
+    color = request.form.getlist("color")
 
-    color_string = " ".join(color)
+    if len(color) == 1:
+        color_string = str(color[0])
 
-    person = request.args.get("person")
-    adjective = request.args.get("adjective")
-    noun = request.args.get("noun")
+    elif len(color) == 2:
+        color_string = " and ".join(color)
+    elif len(color) > 2:
+        color_string = ", ".join(color[:-1])
+        color_string = color_string + ", and " + color[-1]
+
+    person = request.form.get("person")
+    adjective = request.form.get("adjective")
+    noun = request.form.get("noun")
 
     return render_template(choice(AVAILABLE),
                            person=person,

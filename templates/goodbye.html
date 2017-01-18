@@ -1,13 +1,15 @@
 <!doctype html>
+{% extends 'base.html' %}
+
 <html>
 <head>
-  <title>Bye There!</title>
+  {% block title %}Bye There!{% endblock %}
 </head>
-<body>
+{% block content %}
 
 <h1>Bye There!</h1>
 
 Goodbye!
 
-</body>
+{% endblock %}
 </html>

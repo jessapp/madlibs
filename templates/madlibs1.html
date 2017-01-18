@@ -1,9 +1,11 @@
 <!doctype html>
+{% extends 'base.html' %}
+
 <html>
 <head>
-  <title>A Game</title>
+  {% block title %}{% endblock %}
 </head>
-<body>
+{% block content %}
 
 
 {{ adjective }} Macdonald had a {{ noun }}, E-I-E-I-O
@@ -15,5 +17,5 @@ everywhere a {{ color }} {{ color }},
 {{ adjective }} Macdonald had a {{ noun }}, E-I-E-I-O.  
 
 
-</body>
+{% endblock %}
 </html>

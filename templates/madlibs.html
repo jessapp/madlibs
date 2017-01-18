@@ -1,11 +1,13 @@
 <!doctype html>
+{% extends 'base.html' %}
+
 <html>
 <head>
-  <title>A Game</title>
+  {% block title %}{% endblock %}
 </head>
-<body>
+{% block content %}
 
 There once was {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way.
 
-</body>
+{% endblock %}
 </html>
